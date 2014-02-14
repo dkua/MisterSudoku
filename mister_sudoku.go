@@ -1,7 +1,7 @@
 package main
 
 import (
-	"MisterSudoku/bot"
+	"github.com/dkua/MisterSudoku/bot"
 	"fmt"
 	"net/url"
 	"time"
