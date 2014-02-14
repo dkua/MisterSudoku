@@ -2,19 +2,11 @@ package bot
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/dkua/go-sudoku"
 	"os"
 )
-
-type Configuration struct {
-	ConsumerKey    string
-	ConsumerSecret string
-	AccessToken    string
-	AccessSecret   string
-}
 
 func CreateTweet() string {
 	puzzle := sudoku.CreatePuzzle(17) // 17 is the min givens for a unique solution
@@ -28,16 +20,8 @@ func CreateTweet() string {
 }
 
 func GetTwitterApi() *anaconda.TwitterApi {
-	file, _ := os.Open("settings.json")
-	decoder := json.NewDecoder(file)
-	settings := &Configuration{}
-	decoder.Decode(&settings)
-	fmt.Println(settings.AccessToken)
-	fmt.Println(settings.AccessSecret)
-
-	anaconda.SetConsumerKey(settings.ConsumerKey)
-	anaconda.SetConsumerSecret(settings.ConsumerSecret)
-	api := anaconda.NewTwitterApi(settings.AccessToken, settings.AccessSecret)
-
+	anaconda.SetConsumerKey(os.Getenv("CONSUMER_KEY"))
+	anaconda.SetConsumerSecret(os.Getenv("CONSUMER_SECRET"))
+	api := anaconda.NewTwitterApi(os.Getenv("ACCESS_TOKEN"), os.Getenv("ACCESS_SECRET"))
 	return api
 }
