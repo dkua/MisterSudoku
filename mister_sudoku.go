@@ -16,6 +16,6 @@ func main() {
 			fmt.Printf("%v\n%v", "Something went wrong", err)
 		}
 		fmt.Println(tweet)
-		time.Sleep(60 * time.Second)
+		time.Sleep(90 * time.Second)
 	}
 }

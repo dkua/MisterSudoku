@@ -32,8 +32,6 @@ func GetTwitterApi() *anaconda.TwitterApi {
 	decoder := json.NewDecoder(file)
 	settings := &Configuration{}
 	decoder.Decode(&settings)
-	fmt.Println(settings.AccessToken)
-	fmt.Println(settings.AccessSecret)
 
 	anaconda.SetConsumerKey(settings.ConsumerKey)
 	anaconda.SetConsumerSecret(settings.ConsumerSecret)
