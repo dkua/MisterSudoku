@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bot"
 	"fmt"
+	"github.com/dkua/MisterSudoku/bot"
 	"net/url"
 	"time"
 )
